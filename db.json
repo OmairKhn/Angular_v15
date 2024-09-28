@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "a70e",
+      "name": "umair asdf",
+      "phone": "333",
+      "email": "umairkhan1237@gmail.com",
+      "age": 22
+    },
+    {
+      "id": "1e26",
+      "name": "umair asdf",
+      "phone": "333",
+      "email": "umairkhan1237@gmail.com",
+      "age": 22
+    }
+  ]
+}

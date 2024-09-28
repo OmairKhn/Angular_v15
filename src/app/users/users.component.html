@@ -1,0 +1,121 @@
+<div class="container mt-2">
+    <!-- Navigation Pills -->
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="pills-home-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-home"
+          type="button"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+        >
+          {{ editMode ? 'Edit User' : 'Add User' }}
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="pills-profile-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="false"
+        >
+          User List
+        </button>
+      </li>
+    </ul>
+  
+    <!-- Tab Content -->
+    <div class="tab-content" id="pills-tabContent">
+      <!-- Add/Edit User Form -->
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="nameInput">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameInput"
+              formControlName="name"
+              placeholder="Enter your name"
+              required
+            >
+          </div>
+          <div class="form-group mb-3">
+            <label for="phoneInput">Phone Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phoneInput"
+              formControlName="phone"
+              placeholder="Enter your phone number"
+              required
+            >
+          </div>
+          <div class="form-group mb-3">
+            <label for="emailInput">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailInput"
+              formControlName="email"
+              placeholder="Enter your email"
+              required
+            >
+          </div>
+          <div class="form-group mb-3">
+            <label for="ageInput">Age</label>
+            <input
+              type="number"
+              class="form-control"
+              id="ageInput"
+              formControlName="age"
+              placeholder="Enter your age"
+              required
+            >
+          </div>
+          <button type="submit" class="btn btn-primary mt-1 me-1">
+            {{ editMode ? 'Update' : 'Add' }}
+          </button>
+          <button type="reset" class="btn btn-secondary mt-1" (click)="onReset()">Reset</button>
+        </form>
+      </div>
+  
+      <!-- User List Table -->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Age</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.age }}</td>
+              <td>
+                <button type="button" class="btn btn-danger me-1" (click)="deleteUser(user.id)">Delete</button>
+                <button type="button" class="btn btn-warning" (click)="editUser(user)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+ 

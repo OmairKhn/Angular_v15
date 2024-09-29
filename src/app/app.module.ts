@@ -19,8 +19,8 @@ import { LoginComponent } from './auth/login/login.component';
   declarations: [
     AppComponent,
     UsersComponent,
-    RegisterComponent,
-    LoginComponent
+   RegisterComponent,
+   LoginComponent
   ],
   imports: [
     BrowserModule,

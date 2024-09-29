@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
           this.getUsers();
         },
         error: (err) => {
-          console.error('Error updating user:', err);
+          console.error('Error updating user:', err );
           alert('Failed to update user. Please try again.');
         }
       });
@@ -61,6 +61,7 @@ export class UsersComponent implements OnInit {
       // Add user logic
       this.service.addUser(this.userForm.value).subscribe({
         next: (data: any) => {
+          console.log(data)
           alert('User added successfully!');
           this.userForm.reset();
           this.getUsers();

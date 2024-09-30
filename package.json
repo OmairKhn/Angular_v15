@@ -9,7 +9,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json-server": "json-server --watch db.json --port 3000"
+    "json-server": "json-server --watch db.json --port 3000",
+    "deploy": "ng build --configuration production --base-href '/my-old-angular-app/' && npx angular-cli-ghpages --dir=dist/my-old-angular-app"
+
   },
   "private": true,
   "dependencies": {

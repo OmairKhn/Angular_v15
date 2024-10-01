@@ -20,6 +20,13 @@
       "phone": "333",
       "email": "umairkhan1237@gmail.com",
       "age": 22
+    },
+    {
+      "id": "38d6",
+      "name": "mustafa khan",
+      "phone": "332223",
+      "email": "mustafa@gmail.com",
+      "age": 3
     }
   ]
 }

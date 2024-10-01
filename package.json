@@ -1,6 +1,5 @@
 {
   "homepage": "https://OmairKhn.github.io/my-old-angular-app",
-
   "name": "my-old-angular-app",
   "version": "0.0.0",
   "scripts": {
@@ -11,7 +10,6 @@
     "test": "ng test",
     "json-server": "json-server --watch db.json --port 3000",
     "deploy": "ng build --configuration production --base-href '/my-old-angular-app/' && npx angular-cli-ghpages --dir=dist/my-old-angular-app"
-
   },
   "private": true,
   "dependencies": {
@@ -24,7 +22,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^13.1.1",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "firebase": "^10.13.2",

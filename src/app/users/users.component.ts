@@ -1,3 +1,4 @@
+// users.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service'; // Ensure the path is correct
@@ -13,6 +14,7 @@ export class UsersComponent implements OnInit {
   users: any[] = []; // To store fetched users
   editMode: boolean = false;
   editUserId: number | null = null;
+  searchTerm: string = ''; // New property for search term
 
   constructor(private fb: FormBuilder, private service: UserService) {
     this.userForm = this.fb.group({
@@ -32,6 +34,7 @@ export class UsersComponent implements OnInit {
     this.service.getUsers().subscribe({
       next: (data: any[]) => {
         this.users = data;
+        console.log('Fetched Users:', this.users); // Debugging line
       },
       error: (err) => {
         console.error('Error fetching users:', err);
@@ -53,7 +56,7 @@ export class UsersComponent implements OnInit {
           this.getUsers();
         },
         error: (err) => {
-          console.error('Error updating user:', err );
+          console.error('Error updating user:', err);
           alert('Failed to update user. Please try again.');
         }
       });
@@ -61,7 +64,7 @@ export class UsersComponent implements OnInit {
       // Add user logic
       this.service.addUser(this.userForm.value).subscribe({
         next: (data: any) => {
-          console.log(data)
+          console.log(data);
           alert('User added successfully!');
           this.userForm.reset();
           this.getUsers();
@@ -79,6 +82,7 @@ export class UsersComponent implements OnInit {
     this.userForm.reset();
     this.editMode = false;
     this.editUserId = null;
+    this.searchTerm = ''; // Optional: Reset search term when resetting the form
   }
 
   // Delete a user
@@ -111,5 +115,19 @@ export class UsersComponent implements OnInit {
     // Switch to the Add User tab
     const addUserTab = document.getElementById('pills-home-tab') as HTMLElement;
     addUserTab.click();
+  }
+
+  // Getter to return filtered users based on search term
+  get filteredUsers(): any[] {
+    if (!this.searchTerm) {
+      return this.users;
+    }
+    const term = this.searchTerm.toLowerCase();
+    const filtered = this.users.filter(user => {
+      return user.name && user.name.toLowerCase().includes(term);
+    });
+    console.log('Search Term:', this.searchTerm); // Debugging line
+    console.log('Filtered Users:', filtered); // Debugging line
+    return filtered;
   }
 }
